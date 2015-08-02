@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="nexmo_game.Pages.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:nexmo_game.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontSize="{StaticResource TextStyleMediumFontSize}">
+
+    <Page.Background>
+        <ImageBrush ImageSource="ms-appx:///Images/nexmo4.jpg" Opacity="0.5" />
+    </Page.Background>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="10">
+            <TextBlock Grid.Row="0" x:Name="Title" Text="About" FontSize="{StaticResource TextStyleExtraExtraLargeFontSize}" Margin="0 10 0 0" />
+
+            <StackPanel Orientation="Horizontal">
+                <Image Width="120" Height="120" Source="ms-appx:///Images/Logo.png" HorizontalAlignment="Center"/>
+
+                <StackPanel>
+                    <TextBlock FontStyle="Italic" FontWeight="Bold" Name="txtBy" Text="Developed by:" HorizontalAlignment="Left" />
+                    <TextBlock Name="txtName" Text="ISC Luis Antonio Beltran" Margin="10"/>
+                    <TextBlock FontStyle="Italic" FontWeight="Bold" Name="txtContact" Text="Contact:" HorizontalAlignment="Left"/>
+                    <TextBlock Name="txtEMail" Tapped="txtEmail_Tapped" Margin="10">
+                        <Underline>
+                            <Run Text="luis.beltran@itcelaya.edu.mx"/>
+                        </Underline>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+
+            <RichTextBlock Margin="5">
+                <Paragraph>
+                    <Span>
+                        <Run FontWeight="Bold" Text="Privacy Policy"/>
+                        <Run Text="&#10;This app does not store any kind of information on Internet.
+                             &#10;&#10;The following data are stored on your phone: Your nickname, country, game statistics, and lists of both countries and mobile network carriers.
+                             &#10;&#10;If there are any questions regarding this privacy policy, you may contact the author of the application by tapping on the above e-mail address.
+                             &#10;&#10;Information about mobile network carriers and number information is provided by "/>
+                        <Hyperlink NavigateUri="https://labs.nexmo.com/" Foreground="White">
+                            <Underline>
+                                <Run FontWeight="Bold" Text="Nexmo Number Insight API (*)"/>
+                            </Underline>
+                        </Hyperlink>
+                        <Run Text="&#10;&#10;(*) (&#0169;) Copyright Nexmo Inc. 2011-2015. All rights reserved."/>
+                    </Span>
+                </Paragraph>
+            </RichTextBlock>
+        </StackPanel>
+    </ScrollViewer>
+
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal" IsOpen="False">
+            <AppBarButton Label="Share" Icon="ReShare" Name="btnShare" Click="btnShare_Click"/>
+            <AppBarButton Label="Other apps" Icon="ViewAll" Name="btnAllApps" Click="btnAllApps_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

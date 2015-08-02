@@ -1,0 +1,22 @@
+﻿[
+    {
+        "Id": "1",
+        "network": "mobile"
+    },
+    {
+        "Id": "2",
+        "network": "landline"
+    },
+    {
+        "Id": "3",
+        "network": "virtual"
+    },
+    {
+        "Id": "4",
+        "network": "premium"
+    },
+    {
+        "Id": "5",
+        "network": "toll-free"
+    }
+]

@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30045DC7-3D34-45B7-B37B-E085C86EB19F}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>nexmo_game</RootNamespace>
+    <AssemblyName>nexmo-game</AssemblyName>
+    <DefaultLanguage>es-ES</DefaultLanguage>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\AppInfo.cs" />
+    <Compile Include="Classes\Carriers.cs" />
+    <Compile Include="Classes\Country.cs" />
+    <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\LocalContact.cs" />
+    <Compile Include="Classes\Methods.cs" />
+    <Compile Include="Classes\Network.cs" />
+    <Compile Include="Classes\Nexmo.cs" />
+    <Compile Include="Classes\NexmoFormat.cs" />
+    <Compile Include="Classes\NexmoInfo.cs" />
+    <Compile Include="Classes\NexmoLookup.cs" />
+    <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\Question.cs" />
+    <Compile Include="Classes\Share.cs" />
+    <Compile Include="Classes\Utils.cs" />
+    <Compile Include="Pages\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StartScreen.xaml.cs">
+      <DependentUpon>StartScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Statistics.xaml.cs">
+      <DependentUpon>Statistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLite.cs" />
+    <Compile Include="SQLiteAsync.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Logo.scale-240.png" />
+    <Content Include="Assets\SmallLogo.scale-240.png" />
+    <Content Include="Assets\SplashScreen.scale-240.png" />
+    <Content Include="Assets\Square71x71Logo.scale-240.png" />
+    <Content Include="Assets\StoreLogo.scale-240.png" />
+    <Content Include="Assets\WideLogo.scale-240.png" />
+    <Content Include="Images\Countries\ad.png" />
+    <Content Include="Images\Countries\ae.png" />
+    <Content Include="Images\Countries\af.png" />
+    <Content Include="Images\Countries\ag.png" />
+    <Content Include="Images\Countries\ai.png" />
+    <Content Include="Images\Countries\al.png" />
+    <Content Include="Images\Countries\am.png" />
+    <Content Include="Images\Countries\ao.png" />
+    <Content Include="Images\Countries\aq.png" />
+    <Content Include="Images\Countries\ar.png" />
+    <Content Include="Images\Countries\as.png" />
+    <Content Include="Images\Countries\at.png" />
+    <Content Include="Images\Countries\au.png" />
+    <Content Include="Images\Countries\AW.png" />
+    <Content Include="Images\Countries\AX.png" />
+    <Content Include="Images\Countries\az.png" />
+    <Content Include="Images\Countries\ba.png" />
+    <Content Include="Images\Countries\bb.png" />
+    <Content Include="Images\Countries\bd.png" />
+    <Content Include="Images\Countries\be.png" />
+    <Content Include="Images\Countries\bf.png" />
+    <Content Include="Images\Countries\bg.png" />
+    <Content Include="Images\Countries\bh.png" />
+    <Content Include="Images\Countries\bi.png" />
+    <Content Include="Images\Countries\bj.png" />
+    <Content Include="Images\Countries\bl.png" />
+    <Content Include="Images\Countries\BM.png" />
+    <Content Include="Images\Countries\bn.png" />
+    <Content Include="Images\Countries\bo.png" />
+    <Content Include="Images\Countries\bq.png" />
+    <Content Include="Images\Countries\br.png" />
+    <Content Include="Images\Countries\bs.png" />
+    <Content Include="Images\Countries\bt.png" />
+    <Content Include="Images\Countries\bv.png" />
+    <Content Include="Images\Countries\bw.png" />
+    <Content Include="Images\Countries\by.png" />
+    <Content Include="Images\Countries\bz.png" />
+    <Content Include="Images\Countries\ca.png" />
+    <Content Include="Images\Countries\CC.png" />
+    <Content Include="Images\Countries\cd.png" />
+    <Content Include="Images\Countries\cf.png" />
+    <Content Include="Images\Countries\cg.png" />
+    <Content Include="Images\Countries\ch.png" />
+    <Content Include="Images\Countries\ci.png" />
+    <Content Include="Images\Countries\CK.png" />
+    <Content Include="Images\Countries\cl.png" />
+    <Content Include="Images\Countries\cm.png" />
+    <Content Include="Images\Countries\cn.png" />
+    <Content Include="Images\Countries\co.png" />
+    <Content Include="Images\Countries\cr.png" />
+    <Content Include="Images\Countries\cu.png" />
+    <Content Include="Images\Countries\cv.png" />
+    <Content Include="Images\Countries\CW.png" />
+    <Content Include="Images\Countries\CX.png" />
+    <Content Include="Images\Countries\cy.png" />
+    <Content Include="Images\Countries\cz.png" />
+    <Content Include="Images\Countries\de.png" />
+    <Content Include="Images\Countries\dj.png" />
+    <Content Include="Images\Countries\dk.png" />
+    <Content Include="Images\Countries\dm.png" />
+    <Content Include="Images\Countries\do.png" />
+    <Content Include="Images\Countries\dz.png" />
+    <Content Include="Images\Countries\ec.png" />
+    <Content Include="Images\Countries\ee.png" />
+    <Content Include="Images\Countries\eg.png" />
+    <Content Include="Images\Countries\eh.png" />
+    <Content Include="Images\Countries\er.png" />
+    <Content Include="Images\Countries\es.png" />
+    <Content Include="Images\Countries\et.png" />
+    <Content Include="Images\Countries\fi.png" />
+    <Content Include="Images\Countries\fj.png" />
+    <Content Include="Images\Countries\FK.png" />
+    <Content Include="Images\Countries\fm.png" />
+    <Content Include="Images\Countries\FO.png" />
+    <Content Include="Images\Countries\fr.png" />
+    <Content Include="Images\Countries\ga.png" />
+    <Content Include="Images\Countries\gb.png" />
+    <Content Include="Images\Countries\gd.png" />
+    <Content Include="Images\Countries\ge.png" />
+    <Content Include="Images\Countries\GF.png" />
+    <Content Include="Images\Countries\GG.png" />
+    <Content Include="Images\Countries\gh.png" />
+    <Content Include="Images\Countries\GI.png" />
+    <Content Include="Images\Countries\GL.png" />
+    <Content Include="Images\Countries\gm.png" />
+    <Content Include="Images\Countries\gn.png" />
+    <Content Include="Images\Countries\GP.png" />
+    <Content Include="Images\Countries\gq.png" />
+    <Content Include="Images\Countries\gr.png" />
+    <Content Include="Images\Countries\GS.png" />
+    <Content Include="Images\Countries\gt.png" />
+    <Content Include="Images\Countries\GU.png" />
+    <Content Include="Images\Countries\gw.png" />
+    <Content Include="Images\Countries\gy.png" />
+    <Content Include="Images\Countries\HK.png" />
+    <Content Include="Images\Countries\hm.png" />
+    <Content Include="Images\Countries\hn.png" />
+    <Content Include="Images\Countries\hr.png" />
+    <Content Include="Images\Countries\ht.png" />
+    <Content Include="Images\Countries\hu.png" />
+    <Content Include="Images\Countries\id.png" />
+    <Content Include="Images\Countries\ie.png" />
+    <Content Include="Images\Countries\il.png" />
+    <Content Include="Images\Countries\IM.png" />
+    <Content Include="Images\Countries\in.png" />
+    <Content Include="Images\Countries\IO.png" />
+    <Content Include="Images\Countries\iq.png" />
+    <Content Include="Images\Countries\ir.png" />
+    <Content Include="Images\Countries\is.png" />
+    <Content Include="Images\Countries\it.png" />
+    <Content Include="Images\Countries\JE.png" />
+    <Content Include="Images\Countries\jm.png" />
+    <Content Include="Images\Countries\jo.png" />
+    <Content Include="Images\Countries\jp.png" />
+    <Content Include="Images\Countries\ke.png" />
+    <Content Include="Images\Countries\kg.png" />
+    <Content Include="Images\Countries\kh.png" />
+    <Content Include="Images\Countries\ki.png" />
+    <Content Include="Images\Countries\km.png" />
+    <Content Include="Images\Countries\kn.png" />
+    <Content Include="Images\Countries\kp.png" />
+    <Content Include="Images\Countries\kr.png" />
+    <Content Include="Images\Countries\ks.png" />
+    <Content Include="Images\Countries\kw.png" />
+    <Content Include="Images\Countries\KY.png" />
+    <Content Include="Images\Countries\kz.png" />
+    <Content Include="Images\Countries\la.png" />
+    <Content Include="Images\Countries\lb.png" />
+    <Content Include="Images\Countries\lc.png" />
+    <Content Include="Images\Countries\li.png" />
+    <Content Include="Images\Countries\lk.png" />
+    <Content Include="Images\Countries\lr.png" />
+    <Content Include="Images\Countries\ls.png" />
+    <Content Include="Images\Countries\lt.png" />
+    <Content Include="Images\Countries\lu.png" />
+    <Content Include="Images\Countries\lv.png" />
+    <Content Include="Images\Countries\ly.png" />
+    <Content Include="Images\Countries\ma.png" />
+    <Content Include="Images\Countries\mc.png" />
+    <Content Include="Images\Countries\md.png" />
+    <Content Include="Images\Countries\me.png" />
+    <Content Include="Images\Countries\mf.png" />
+    <Content Include="Images\Countries\mg.png" />
+    <Content Include="Images\Countries\mh.png" />
+    <Content Include="Images\Countries\mk.png" />
+    <Content Include="Images\Countries\ml.png" />
+    <Content Include="Images\Countries\mm.png" />
+    <Content Include="Images\Countries\mn.png" />
+    <Content Include="Images\Countries\MO.png" />
+    <Content Include="Images\Countries\MP.png" />
+    <Content Include="Images\Countries\MQ.png" />
+    <Content Include="Images\Countries\mr.png" />
+    <Content Include="Images\Countries\MS.png" />
+    <Content Include="Images\Countries\mt.png" />
+    <Content Include="Images\Countries\mu.png" />
+    <Content Include="Images\Countries\mv.png" />
+    <Content Include="Images\Countries\mw.png" />
+    <Content Include="Images\Countries\mx.png" />
+    <Content Include="Images\Countries\my.png" />
+    <Content Include="Images\Countries\mz.png" />
+    <Content Include="Images\Countries\na.png" />
+    <Content Include="Images\Countries\NC.png" />
+    <Content Include="Images\Countries\ne.png" />
+    <Content Include="Images\Countries\NF.png" />
+    <Content Include="Images\Countries\ng.png" />
+    <Content Include="Images\Countries\ni.png" />
+    <Content Include="Images\Countries\nl.png" />
+    <Content Include="Images\Countries\no.png" />
+    <Content Include="Images\Countries\np.png" />
+    <Content Include="Images\Countries\nr.png" />
+    <Content Include="Images\Countries\NU.png" />
+    <Content Include="Images\Countries\nz.png" />
+    <Content Include="Images\Countries\om.png" />
+    <Content Include="Images\Countries\pa.png" />
+    <Content Include="Images\Countries\pe.png" />
+    <Content Include="Images\Countries\PF.png" />
+    <Content Include="Images\Countries\pg.png" />
+    <Content Include="Images\Countries\ph.png" />
+    <Content Include="Images\Countries\pk.png" />
+    <Content Include="Images\Countries\pl.png" />
+    <Content Include="Images\Countries\PM.png" />
+    <Content Include="Images\Countries\PN.png" />
+    <Content Include="Images\Countries\PR.png" />
+    <Content Include="Images\Countries\PS.png" />
+    <Content Include="Images\Countries\pt.png" />
+    <Content Include="Images\Countries\pw.png" />
+    <Content Include="Images\Countries\py.png" />
+    <Content Include="Images\Countries\qa.png" />
+    <Content Include="Images\Countries\re.png" />
+    <Content Include="Images\Countries\ro.png" />
+    <Content Include="Images\Countries\rs.png" />
+    <Content Include="Images\Countries\ru.png" />
+    <Content Include="Images\Countries\rw.png" />
+    <Content Include="Images\Countries\sa.png" />
+    <Content Include="Images\Countries\sb.png" />
+    <Content Include="Images\Countries\sc.png" />
+    <Content Include="Images\Countries\sd.png" />
+    <Content Include="Images\Countries\se.png" />
+    <Content Include="Images\Countries\sg.png" />
+    <Content Include="Images\Countries\sh.png" />
+    <Content Include="Images\Countries\si.png" />
+    <Content Include="Images\Countries\sj.png" />
+    <Content Include="Images\Countries\sk.png" />
+    <Content Include="Images\Countries\sl.png" />
+    <Content Include="Images\Countries\sm.png" />
+    <Content Include="Images\Countries\sn.png" />
+    <Content Include="Images\Countries\so.png" />
+    <Content Include="Images\Countries\sr.png" />
+    <Content Include="Images\Countries\SS.png" />
+    <Content Include="Images\Countries\st.png" />
+    <Content Include="Images\Countries\sv.png" />
+    <Content Include="Images\Countries\SX.png" />
+    <Content Include="Images\Countries\sy.png" />
+    <Content Include="Images\Countries\sz.png" />
+    <Content Include="Images\Countries\TC.png" />
+    <Content Include="Images\Countries\td.png" />
+    <Content Include="Images\Countries\TF.png" />
+    <Content Include="Images\Countries\tg.png" />
+    <Content Include="Images\Countries\th.png" />
+    <Content Include="Images\Countries\tj.png" />
+    <Content Include="Images\Countries\TK.png" />
+    <Content Include="Images\Countries\tl.png" />
+    <Content Include="Images\Countries\tm.png" />
+    <Content Include="Images\Countries\tn.png" />
+    <Content Include="Images\Countries\to.png" />
+    <Content Include="Images\Countries\tr.png" />
+    <Content Include="Images\Countries\tt.png" />
+    <Content Include="Images\Countries\tv.png" />
+    <Content Include="Images\Countries\tw.png" />
+    <Content Include="Images\Countries\tz.png" />
+    <Content Include="Images\Countries\ua.png" />
+    <Content Include="Images\Countries\ug.png" />
+    <Content Include="Images\Countries\um.png" />
+    <Content Include="Images\Countries\us.png" />
+    <Content Include="Images\Countries\uy.png" />
+    <Content Include="Images\Countries\uz.png" />
+    <Content Include="Images\Countries\va.png" />
+    <Content Include="Images\Countries\vc.png" />
+    <Content Include="Images\Countries\ve.png" />
+    <Content Include="Images\Countries\VG.png" />
+    <Content Include="Images\Countries\VI.png" />
+    <Content Include="Images\Countries\vn.png" />
+    <Content Include="Images\Countries\vu.png" />
+    <Content Include="Images\Countries\WF.png" />
+    <Content Include="Images\Countries\ws.png" />
+    <Content Include="Images\Countries\ye.png" />
+    <Content Include="Images\Countries\yt.png" />
+    <Content Include="Images\Countries\za.png" />
+    <Content Include="Images\Countries\zm.png" />
+    <Content Include="Images\Countries\zw.png" />
+    <Content Include="Images\default.png" />
+    <Content Include="Images\nexmo1.jpg" />
+    <Content Include="Images\nexmo2.jpg" />
+    <Content Include="Images\nexmo3.jpg" />
+    <Content Include="Images\nexmo4.jpg" />
+    <Content Include="Images\nexmo5.jpg" />
+    <Content Include="Images\quiz.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\carriers.json" />
+    <Content Include="Data\countrycodes.json" />
+    <Content Include="Data\networks.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="Pages\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Game.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StartScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Statistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Syncfusion 8.1 Controls for WP XAML, Version=13.1.0.30">
+      <Name>Syncfusion 8.1 Controls for WP XAML</Name>
+    </SDKReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

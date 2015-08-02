@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="nexmo_game.Pages.StartScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:nexmo_game.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:Notification="using:Syncfusion.UI.Xaml.Controls.Notification" 
+    FontSize="{StaticResource TextStyleMediumFontSize}">
+
+    <Page.Background>
+        <ImageBrush ImageSource="ms-appx:///Images/nexmo4.jpg" Opacity="0.5" />
+    </Page.Background>
+
+    <ScrollViewer>
+        <StackPanel Margin="20">
+            <Notification:SfBusyIndicator ViewboxHeight="50" ViewboxWidth="50" AnimationType="GPS" x:Name="bsyMessage" IsBusy="False" HorizontalAlignment="Center">
+                <Notification:SfBusyIndicator.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Margin="0,15,0,0" Foreground="White" FontWeight="Bold" FontStyle="Italic" FontSize="13" Text="Getting info: countries, carriers..." />
+                    </DataTemplate>
+                </Notification:SfBusyIndicator.HeaderTemplate>
+            </Notification:SfBusyIndicator>
+
+            <StackPanel x:Name="main">
+                <TextBlock x:Name="txtTitle" Text="Welcome!" FontSize="{StaticResource TextStyleExtraExtraLargeFontSize}" />
+
+                <RichTextBlock Margin="0 10 0 0">
+                    <Paragraph>
+                        <Span>
+                            <Run Text="Welcome to Nexmo Quiz for Windows Phone! Have fun with this app and test your knowledge about your Contact List. 
+                                     &#10;&#10;In each game, you'll answer a question about a contact's number: 
+                                 &#10;* Which carrier does he/she use?
+                                 &#10;* Which kind of network does the number use?
+                                 &#10;* Which country prefix does the number use?
+                                 &#10;* In which country has the number been registered?
+                                 &#10;* Whose number is shown?
+                                 &#10;&#10;Most of this information is brought to you by Nexmo(*)'s powerful Number Insight API, which retrieves useful information about phone numbers.
+                                 &#10;&#10;Enjoy this app!"/>
+                            <Hyperlink NavigateUri="https://labs.nexmo.com/" Foreground="White">
+                                <Underline>
+                                    <Run FontWeight="Bold" Text="&#10;&#10;Learn more about Nexmo Number Insight API"/>
+                                </Underline>
+                            </Hyperlink>
+                            <Run Text="&#10;&#10;(*) (&#0169;) Copyright Nexmo Inc. 2011-2015. All rights reserved."/>
+                        </Span>
+                    </Paragraph>
+                </RichTextBlock>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="cmdBar">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Play" x:Name="btnPlay" Label="play" Click="btnPlay_Click"/>
+                <AppBarButton Icon="Setting" x:Name="btnSettings" Label="settings" Click="btnSettings_Click"/>
+                <AppBarButton Icon="ShowResults" x:Name="btnStatistics" Label="stats" Click="btnStatistics_Click"/>
+                <AppBarButton Icon="Mail" x:Name="btnFeedback" Label="feedback" Click="btnFeedback_Click"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="btnAbout" Label="about the app" Click="btnAbout_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
