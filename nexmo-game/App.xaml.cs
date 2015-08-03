@@ -20,7 +20,7 @@ namespace nexmo_game
         public static List<Carriers> carriers;
         public static List<Network> networks;
         public static Random random;
-        public static List<LocalContact> contacts;
+        public static List<LocalContactDB> contacts;
 
         public App()
         {

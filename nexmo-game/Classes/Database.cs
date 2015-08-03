@@ -52,6 +52,8 @@ namespace nexmo_game.Classes
             await conn.CreateTableAsync<Carriers>();
             await conn.CreateTableAsync<Country>();
             await conn.CreateTableAsync<Network>();
+            await conn.CreateTableAsync<LocalContactDB>();
+            
             /*App.player = await CreatePlayer();
             App.carriers = await CreateCarriers();
             App.countries = await CreateCountries();

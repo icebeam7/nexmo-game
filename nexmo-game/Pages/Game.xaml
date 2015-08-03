@@ -25,21 +25,21 @@
             </Notification:SfBusyIndicator>
 
             <StackPanel Margin="0" x:Name="mainContainer">
-                <StackPanel Orientation="Horizontal">
-                    <Image x:Name="imgContact" Width="200" Height="200" />
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 0 0 0" >
-                        <TextBlock FontSize="{StaticResource TextStyleMediumFontSize}" Text="Phone number" Foreground="White" FontWeight="Bold"/>
-                        <TextBlock x:Name="txtNumber" FontSize="{StaticResource TextStyleMediumFontSize}" Foreground="White"/>
-                        <TextBlock FontSize="{StaticResource TextStyleMediumFontSize}" Text="Instructions" FontWeight="Bold"/>
-                        <TextBlock x:Name="txtMessage" FontSize="{StaticResource TextStyleMediumFontSize}"/>
-                        <TextBlock x:Name="txtCorrectAnswer" Foreground="White" FontSize="{StaticResource TextStyleMediumFontSize}" FontWeight="Bold" Visibility="Collapsed" TextWrapping="Wrap" Width="150"/>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Image x:Name="imgContact" Width="150" Height="150" />
+                    <StackPanel HorizontalAlignment="Center" Width="200" VerticalAlignment="Center" Margin="10 0 0 0" >
+                        <TextBlock Width="200" x:Name="txtName" FontSize="{StaticResource TextStyleExtraLargeFontSize}" Foreground="White" TextWrapping="Wrap"/>
+                        <TextBlock Width="200" x:Name="txtNumber" FontSize="{StaticResource TextStyleLargeFontSize}" Foreground="White" TextWrapping="Wrap"/>
                     </StackPanel>
                 </StackPanel>
 
-                <RadioButton x:Name="rbn0" Margin="0 10 0 0" BorderBrush="White" Checked="rbn0_Checked"/>
-                <RadioButton x:Name="rbn1" Margin="0 10 0 0" BorderBrush="White" Checked="rbn1_Checked"/>
-                <RadioButton x:Name="rbn2" Margin="0 10 0 0" BorderBrush="White" Checked="rbn2_Checked"/>
-                <RadioButton x:Name="rbn3" Margin="0 10 0 0" BorderBrush="White" Checked="rbn3_Checked"/>
+                <TextBlock x:Name="txtMessage" Margin="0 15 0 0" TextWrapping="Wrap" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="txtCorrectAnswer" Margin="0 5 0 0" Foreground="White" FontWeight="Bold" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+
+                <RadioButton x:Name="rbn0" Margin="0 5 0 0" BorderBrush="White" Checked="rbn0_Checked"/>
+                <RadioButton x:Name="rbn1" Margin="0 5 0 0" BorderBrush="White" Checked="rbn1_Checked"/>
+                <RadioButton x:Name="rbn2" Margin="0 5 0 0" BorderBrush="White" Checked="rbn2_Checked"/>
+                <RadioButton x:Name="rbn3" Margin="0 5 0 0" BorderBrush="White" Checked="rbn3_Checked"/>
 
                 <RichTextBlock Margin="10" FontSize="{StaticResource TextStyleSmallFontSize}">
                     <Paragraph>

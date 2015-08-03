@@ -18,7 +18,7 @@
             <Notification:SfBusyIndicator ViewboxHeight="50" ViewboxWidth="50" AnimationType="GPS" x:Name="bsyMessage" IsBusy="False" HorizontalAlignment="Center">
                 <Notification:SfBusyIndicator.HeaderTemplate>
                     <DataTemplate>
-                        <TextBlock Margin="0,15,0,0" Foreground="White" FontWeight="Bold" FontStyle="Italic" FontSize="13" Text="Getting info: countries, carriers..." />
+                        <TextBlock Margin="0,15,0,0" Foreground="White" FontWeight="Bold" FontStyle="Italic" FontSize="13" Text="Getting info: countries, carriers, contacts..." />
                     </DataTemplate>
                 </Notification:SfBusyIndicator.HeaderTemplate>
             </Notification:SfBusyIndicator>
@@ -35,7 +35,8 @@
                                  &#10;* Which kind of network does the number use?
                                  &#10;* Which country prefix does the number use?
                                  &#10;* In which country has the number been registered?
-                                 &#10;* Whose number is shown?
+                                 &#10;* Which is your contact's phone number?
+                                 &#10;&#10;* TIP * For more accurrate results of this app, go to Settings and select the country in which you registered your phone number.
                                  &#10;&#10;Most of this information is brought to you by Nexmo(*)'s powerful Number Insight API, which retrieves useful information about phone numbers.
                                  &#10;&#10;Enjoy this app!"/>
                             <Hyperlink NavigateUri="https://labs.nexmo.com/" Foreground="White">

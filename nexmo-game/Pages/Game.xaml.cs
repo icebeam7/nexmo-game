@@ -40,8 +40,11 @@ namespace nexmo_game.Pages
                     return;
                 }
 
-                txtNumber.Text = question.Contact.PhoneNumber;
+                txtNumber.Text = (question.Type != 5) ? question.Contact.PhoneNumber : "";
                 txtCorrectAnswer.Text = question.Options[question.CorrectOption];
+                
+                txtName.Text = question.Contact.Name;
+                txtMessage.Foreground = new SolidColorBrush(Colors.White); 
                 txtMessage.Text = GetMessage(question.Type);
                 imgContact.Source = Utils.GetBitmap(question.Contact.Thumbnail);
                 rbn0.Content = question.Options[0];
@@ -74,7 +77,7 @@ namespace nexmo_game.Pages
                 case 2: return "Which kind of network does the number use?";
                 case 3: return "Which country prefix does the number use?";
                 case 4: return "In which country has the number been registered?";
-                case 5: return "Whose phone number is shown?";
+                case 5: return "Which is your contact's phone number?";
             }
 
             return "";
@@ -82,8 +85,7 @@ namespace nexmo_game.Pages
 
         private void ShowHideTextBlock(TextBlock txb, bool show, string message)
         {
-            txb.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
-            txb.Text = message;
+            txb.Text = (show) ? message : "";
         }
 
         private void EnableRadioButton(RadioButton rbn, bool enabled)

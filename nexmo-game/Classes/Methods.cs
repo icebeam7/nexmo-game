@@ -75,31 +75,63 @@ namespace nexmo_game.Classes
             return App.carriers.Where(x => x.mcc == code.Substring(0, 3) && x.mnc == code.Substring(3)).FirstOrDefault();
         }
 
-        public Carriers GetRandomCarrier()
+        private List<Carriers> GetCountryCarriers(string country)
         {
-            int random = App.random.Next(1, App.carriers.Count);
-            return App.carriers.Where(x => x.Id == random).FirstOrDefault();
+            var list = App.carriers.Where(x => x.country == country).ToList();
+            return list;
         }
 
-        public async Task<List<LocalContact>> GetLocalContacts()
+        private string GetCountryName(string code)
+        {
+            var country = App.countries.Where(x => x.Code == code).FirstOrDefault();
+            return (country != null) ? country.Name : "";
+        }
+
+        public Carriers GetRandomCarrier(string country = "")
+        {
+            var list = GetCountryCarriers(GetCountryName(country));
+
+            if (list.Count == 0)
+                list = App.carriers;
+
+            int random = App.random.Next(0, list.Count);
+            return list[random];
+        }
+
+        public async Task<List<LocalContactDB>> GetLocalContacts()
+        {
+            var list = await db.conn.Table<LocalContactDB>().ToListAsync();
+            return (list.Count > 0) ? list : await CreateLocalContacts();
+        }
+
+        private async Task<List<LocalContactDB>> CreateLocalContacts()
         {
             ContactStore store = await ContactManager.RequestStoreAsync();
             IReadOnlyList<Contact> contacts = await store.FindContactsAsync();
-            var contactsList = contacts.ToList();
-            List<LocalContact> localContacts = new List<LocalContact>();
+            var contactsList = contacts.Where(x => x.Phones.Count > 0).ToList();
+            List<LocalContactDB> localContacts = new List<LocalContactDB>();
 
             foreach (var contact in contactsList)
             {
-                localContacts.Add(new LocalContact() 
+                localContacts.Add(new LocalContactDB()
                 {
+                    Id = Guid.NewGuid().ToString(),
                     Name = contact.FirstName + " " + contact.LastName,
                     PhoneNumber = GetPhoneNumber(contact),
-                    Thumbnail = GetThumbnail(contact)
+                    Thumbnail = GetThumbnail(contact),
+                    Carrier = "",
+                    Country = "",
+                    InternationalNumber = "",
+                    Network = "",
+                    Prefix = ""
                 });
             }
 
+            await db.conn.InsertAllAsync(localContacts);
             return localContacts;
         }
+
+
 
         public string GetRandomContactNumber()
         {
@@ -107,54 +139,104 @@ namespace nexmo_game.Classes
             return App.contacts[aleat].PhoneNumber;
         }
 
-        public LocalContact GetRandomContact()
+        public async Task<LocalContact> GetRandomContact(int type)
         {
             int i = 0;
             LocalContact contacto;
 
             do
             {
-                contacto = App.contacts[Utils.GetRandomValue(App.contacts.Count)];
+                int random = Utils.GetRandomValue(App.contacts.Count);
+                var contactoDB = App.contacts[random];
 
-                if (contacto.PhoneNumber == "")
+                if (contactoDB.PhoneNumber == "")
                 {
                     i++;
+                    contacto = null;
                     continue;
                 }
 
-                contacto.NexmoInfo = GetNexmoInfo(contacto.PhoneNumber, App.player.Country);
+                contacto = new LocalContact()
+                {
+                    Name = contactoDB.Name,
+                    PhoneNumber = contactoDB.PhoneNumber,
+                    Thumbnail = contactoDB.Thumbnail
+                };
+
+                contacto.NexmoInfo = (contactoDB.Carrier == "")
+                    ? await GetNexmoInfo(contacto.PhoneNumber, App.player.Country, type, contactoDB.Id)
+                    : GetNexmoInfoLocal(contactoDB);
 
                 if (contacto.NexmoInfo == null)
                 {
                     i++;
+                    contacto = null;
                     continue;
                 }
+                else
+                    break;
             } while (i < 5);
 
             return contacto;
         }
 
-        private NexmoInfo GetNexmoInfo(string phone, string country)
+        private NexmoInfo GetNexmoInfoLocal(LocalContactDB contactoDB)
+        {
+            return new NexmoInfo()
+            {
+                NexmoFormat = new NexmoFormat()
+                {
+                    Country = contactoDB.Country,
+                    InternationalNumber = contactoDB.InternationalNumber,
+                    Prefix = contactoDB.Prefix
+                },
+                NexmoLookup = new NexmoLookup()
+                {
+                    Carrier = contactoDB.Carrier,
+                    Network = contactoDB.Network
+                }
+            };
+        }
+
+        private async Task<NexmoInfo> GetNexmoInfo(string phone, string country, int type, string id)
         {
             NexmoFormat format = (NexmoFormat)GetNexmoFormatLookup(phone, country, "format");
 
             if (format == null)
                 return null;
 
-            NexmoLookup lookup = (NexmoLookup)GetNexmoFormatLookup(phone, country, "lookup");
+            NexmoLookup lookup = (type == 1 || type == 2)
+                ? (NexmoLookup)GetNexmoFormatLookup(phone, country, "lookup")
+                : new NexmoLookup() { Network = "", Carrier = "" };
 
             if (lookup == null)
                 return null;
 
-            return new NexmoInfo() { NexmoFormat = format, NexmoLookup = lookup };
+            NexmoInfo nexmoInfo = new NexmoInfo() { NexmoFormat = format, NexmoLookup = lookup };
+            await UpdateLocalContactDB(id, nexmoInfo);
+            return nexmoInfo;
+        }
+
+        private async Task UpdateLocalContactDB(string id, NexmoInfo nexmoInfo)
+        {
+            var local = await db.conn.Table<LocalContactDB>().Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (local != null)
+            {
+                local.Carrier = nexmoInfo.NexmoLookup.Carrier;
+                local.Country = nexmoInfo.NexmoFormat.Country;
+                local.InternationalNumber = nexmoInfo.NexmoFormat.InternationalNumber;
+                local.Network = nexmoInfo.NexmoLookup.Network;
+                local.Prefix = nexmoInfo.NexmoFormat.Prefix;
+            }
         }
 
         private INexmo GetNexmoFormatLookup(string phone, string country, string service)
         {
-            INexmo nexmo = RequestNumberInsight(phone, "", service);
+            INexmo nexmo = RequestNumberInsight(phone, country, service);
 
             if (nexmo == null)
-                nexmo = RequestNumberInsight(phone, country, service);
+                nexmo = RequestNumberInsight(phone, "", service);
 
             return nexmo;
         }
@@ -180,9 +262,11 @@ namespace nexmo_game.Classes
                 }
                 else
                 {
+                    var carrier = GetCarrier((string)datos["current_carrier"]["network_code"]);
+
                     return new NexmoLookup()
                     {
-                        Carrier = GetCarrier((string)datos["current_carrier"]["network_code"]).network,
+                        Carrier = (carrier != null) ? carrier.network : (string)datos["current_carrier"]["name"],
                         Network = (string)datos["current_carrier"]["network_type"]
                     };
                 }
@@ -205,9 +289,10 @@ namespace nexmo_game.Classes
 
         public Network GetRandomNetwork()
         {
-            int random = App.random.Next(1, App.networks.Count);
-            return App.networks.Where(x => x.Id == random).FirstOrDefault();
+            int random = App.random.Next(0, App.networks.Count);
+            return App.networks[random];
         }
+
         public bool IsCorrect(Question question, int option)
         {
             return option == question.CorrectOption;
@@ -217,7 +302,7 @@ namespace nexmo_game.Classes
         {
             int type = Utils.GetRandomValue(6, 1);
             int correct = Utils.GetRandomValue(4);
-            var contact = GetRandomContact();
+            var contact = await GetRandomContact(type);
 
             if (contact == null)
                 return null;
@@ -238,6 +323,12 @@ namespace nexmo_game.Classes
         {
             string[] options = new string[4];
 
+            options[correct] = (type == 1) ? contact.NexmoInfo.NexmoLookup.Carrier
+                            : (type == 2) ? contact.NexmoInfo.NexmoLookup.Network
+                            : (type == 3) ? contact.NexmoInfo.NexmoFormat.Prefix
+                            : (type == 4) ? contact.NexmoInfo.NexmoFormat.Country
+                            : contact.PhoneNumber;
+
             for (int i = 0; i < 4; i++)
             {
                 if (i != correct)
@@ -246,7 +337,7 @@ namespace nexmo_game.Classes
 
                     do
                     {
-                        option = (type == 1) ? GetRandomCarrier().network
+                        option = (type == 1) ? GetRandomCarrier(App.player.Country).network
                             : (type == 2) ? GetRandomNetwork().network
                             : (type == 3) ? GetRandomCarrier().country_code
                             : (type == 4) ? GetRandomCarrier().country
@@ -254,14 +345,6 @@ namespace nexmo_game.Classes
                     } while (options.Contains(option));
 
                     options[i] = option;
-                }
-                else
-                {
-                    options[i] = (type == 1) ? contact.NexmoInfo.NexmoLookup.Carrier
-                            : (type == 2) ? contact.NexmoInfo.NexmoLookup.Network
-                            : (type == 3) ? contact.NexmoInfo.NexmoFormat.Prefix
-                            : (type == 4) ? contact.NexmoInfo.NexmoFormat.Country
-                            : contact.PhoneNumber;
                 }
             }
 
