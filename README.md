@@ -16,7 +16,14 @@ You can learn about these APIs in the following link: https://labs.nexmo.com/
 Check the video in which I tested this app: https://www.livecoding.tv/video/nexmo-game-wp/
 
 Images:
-
+![Start screen](https://github.com/icebeam7/nexmo-game/blob/master/images/nexmo1.png)
+![Settings screen](https://github.com/icebeam7/nexmo-game/blob/master/images/nexmo2.png)
+![Stats screen](https://github.com/icebeam7/nexmo-game/blob/master/images/nexmo3.png)
+![Game screen #1](https://github.com/icebeam7/nexmo-game/blob/master/images/nexmo4.png)
+![Game screen #2](https://github.com/icebeam7/nexmo-game/blob/master/images/nexmo5.png)
+![Game screen #3](https://github.com/icebeam7/nexmo-game/blob/master/images/nexmo6.png)
+![Game screen #4](https://github.com/icebeam7/nexmo-game/blob/master/images/nexmo7.png)
+![Game screen #5](https://github.com/icebeam7/nexmo-game/blob/master/images/nexmo8.png)
 
 
 Download it in your Windows Phone: http://bit.ly/nexmo-icebeam7 (the app has already been submitted to the Windows Phone Store. The link will be alive when the app is available on the store)
