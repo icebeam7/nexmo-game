@@ -1,14 +1,15 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Resources;
 
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("nexmo-game")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A quiz game based on your contacts' phone numbers")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SolucionesTC")]
 [assembly: AssemblyProduct("nexmo-game")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
@@ -27,3 +28,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: ComVisible(false)]
+[assembly: NeutralResourcesLanguageAttribute("en")]

@@ -244,6 +244,10 @@ namespace nexmo_game.Classes
         private INexmo RequestNumberInsight(string phone, string country, string service)
         {
             string extraParam = (country != "") ? String.Format("&country={0}", country) : "";
+
+            if (country != "" && phone.Contains("+"))
+                extraParam = "";
+
             string url = String.Format("https://api.nexmo.com/number/{4}/json?api_key={0}&api_secret={1}&number={2}{3}", 
                 AppInfo.nexmoApiKey, AppInfo.nexmoApiSecret, phone, extraParam, service);
 

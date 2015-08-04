@@ -1,0 +1,4 @@
+MainPackage=C:\Users\LuisAntonio\Desktop\VS2013\nexmo-game\nexmo-game\bin\ARM\Release\nexmo-game_1.1.0.0_Bundle\nexmo-game_1.1.0.0_ARM.appx
+SymbolPackage=C:\Users\LuisAntonio\Desktop\VS2013\nexmo-game\nexmo-game\AppPackages\nexmo-game_1.1.0.0_Test\nexmo-game_1.1.0.0_ARM.appxsym
+ResourcePack=C:\Users\LuisAntonio\Desktop\VS2013\nexmo-game\nexmo-game\bin\ARM\Release\nexmo-game_1.1.0.0_Bundle\nexmo-game_1.1.0.0_scale-100.appx
+ResourcePack=C:\Users\LuisAntonio\Desktop\VS2013\nexmo-game\nexmo-game\bin\ARM\Release\nexmo-game_1.1.0.0_Bundle\nexmo-game_1.1.0.0_scale-140.appx
