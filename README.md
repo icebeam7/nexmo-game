@@ -25,7 +25,4 @@ Images: <br/>
 <img src="https://github.com/icebeam7/nexmo-game/blob/master/images/nexmo7.png" width="360px" height="640px" alt="Game screen #4">
 <img src="https://github.com/icebeam7/nexmo-game/blob/master/images/nexmo8.png" width="360px" height="640px" alt="Game screen #5">
 
-Download it in your Windows Phone: 
-http://windowsphone.com/s?appid=d1443755-498e-479f-8597-e87f1bdd3825 (The app has been submitted and PASSED certification in the Windows Phone store, so it will be available soon).
-
-http://bit.ly/nexmo-icebeam7 (link to be updated when the app is available)
+Download it in your Windows Phone: http://bit.ly/nexmo-icebeam7
